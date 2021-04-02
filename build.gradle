@@ -15,7 +15,12 @@ ext {
 
 jar {
     baseName = 'spring-boot-scala-web'
-    version =  '0.3.0'
+    version = '0.3.0'
+}
+
+bootRun {
+    def absPath = new File("agent").getAbsolutePath()
+    jvmArgs("-agentpath:$absPath\\drill_agent.dll=drillInstallationDir=$absPath\\,adminAddress=localhost:8090,agentId=Scala,buildVersion=0.1.0,logLevel=DEBUG")
 }
 
 repositories {
